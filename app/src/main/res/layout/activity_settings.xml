@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    android:background="@color/settings_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Barra superiore: unico modo esplicito di uscire dall'Activity, dato che il tema
+             non ha una ActionBar di sistema. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="← Chiudi"
+                android:textColor="@color/settings_text"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android Auto Mail Collector"
+            android:textColor="@color/settings_text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifiche mail in tempo reale su Android Auto"
+            android:textColor="@color/settings_dim"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Modalità di rilevamento nuova posta -->
+        <TextView style="@style/SettingsLabel" android:text="Modalità di rilevamento nuova posta (attivabili anche insieme)" />
+
+        <CheckBox
+            android:id="@+id/check_mode_outlook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/settings_text"
+            android:text="Notifiche app Outlook (tutti gli account, nessuna configurazione)" />
+
+        <CheckBox
+            android:id="@+id/check_mode_imap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/settings_text"
+            android:text="IMAP diretto (Gmail, Libero, Aruba - configurabili sotto)" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/settings_dim"
+            android:textSize="12sp"
+            android:text="Se attivi entrambe per lo stesso account, riceverai la notifica due volte: disattiva le notifiche di quell'account dentro l'app Outlook e lascia che sia solo l'IMAP diretto a occuparsene." />
+
+        <Button
+            android:id="@+id/btn_battery_optimization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Disattiva risparmio energetico per questa app" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/settings_dim"
+            android:textSize="12sp"
+            android:text="Consigliato per entrambe le modalità: alcuni telefoni interrompono i servizi in background per risparmiare batteria, impedendo di ricevere le notifiche in modo continuo." />
+
+        <!-- Blocco modalità Notifiche Outlook -->
+        <LinearLayout
+            android:id="@+id/block_outlook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:background="@color/settings_field_bg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/settings_dim"
+                android:textSize="13sp"
+                android:text="L'app legge le notifiche già mostrate dall'app Outlook (che raccoglie tutti i tuoi account) e le mostra anche su Android Auto. Serve autorizzare l'accesso alle notifiche." />
+
+            <Button
+                android:id="@+id/btn_notification_access"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Attiva accesso alle notifiche" />
+
+            <TextView
+                android:id="@+id/txt_notification_access_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/settings_dim"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Blocco modalità IMAP -->
+        <LinearLayout
+            android:id="@+id/block_imap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView style="@style/SettingsLabel" android:text="Account configurati" />
+
+            <LinearLayout
+                android:id="@+id/list_accounts_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/btn_add_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="+ Aggiungi account" />
+        </LinearLayout>
+
+        <TextView style="@style/SettingsLabel" android:text="Lettura vocale" />
+
+        <CheckBox
+            android:id="@+id/check_read_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/settings_text"
+            android:checked="true"
+            android:text="Leggi anche il testo del messaggio (non solo mittente e oggetto)" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="24dp"
+            android:text="Salva impostazioni" />
+
+    </LinearLayout>
+</ScrollView>
